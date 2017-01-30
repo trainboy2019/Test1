@@ -234,6 +234,37 @@ int main(int argc, char **argv) {
         
     }
     
+    u8 language = 0;
+    Result langRes;
+    langRes = CFGU_GetSystemLanguage(&language);
+    printf("       Result: 0x%x\n", (int)langRes);
+    printf("Language code: %d", (int)language);
+    
+    u8 model = 0;
+    Result modelRes;
+    modelRes = CFGU_GetSystemModel(&model);
+    printf("       Result: 0x%x\n", (int)modelRes);
+    printf("Model code: %d", (int)model);
+    
+    u8 region = 0;
+    Result regionRes;
+    regionRes = CFGU_SecureInfoGetRegion(&region);
+    printf("       Result: 0x%x\n", (int)regionRes);
+    printf("Model code: %d", (int)region);
+    
+    if (region==1) {
+        u8 usa = 0;
+        Result usaRes;
+        usaRes = CFGU_GetRegionCanadaUSA(&usa);
+        printf("       Result: 0x%x\n", (int)usaRes);
+        printf("Model code: %d", (int)usa);
+    }
+    
+    OS_VersionBin nver, cver;
+    osGetSystemVersionData(&nver, &cver);
+    
+    printf("SYSTEM version %d.%d.0-%d\n", cver.mainver, cver.minor, nver.mainver);
+    
     
     
 	// Main loop
@@ -264,7 +295,74 @@ int main(int argc, char **argv) {
         
         
         
-        colorTest();
+        //colorTest();
+        
+        if (kDown & KEY_A) {
+            printf("A\n");
+        }
+        if (kDown & KEY_B) {
+            printf("B\n");
+        }
+        if (kDown & KEY_SELECT) {
+            printf("Select\n");
+        }
+        if (kDown & KEY_DRIGHT) {
+            printf("D-Pad Right\n");
+        }
+        if (kDown & KEY_DLEFT) {
+            printf("D-Pad Left\n");
+        }
+        if (kDown & KEY_DUP) {
+            printf("D-Pad Up\n");
+        }
+        if (kDown & KEY_DDOWN) {
+            printf("D-Pad Down\n");
+        }
+        if (kDown & KEY_R) {
+            printf("R\n");
+        }
+        if (kDown & KEY_L) {
+            printf("L\n");
+        }
+        if (kDown & KEY_X) {
+            printf("X\n");
+        }
+        if (kDown & KEY_Y) {
+            printf("Y\n");
+        }
+        if (kDown & KEY_ZL) {
+            printf("ZL\n");
+        }
+        if (kDown & KEY_ZR) {
+            printf("ZR\n");
+        }
+        if (kDown & KEY_TOUCH) {
+            printf("Touch Screen\n");
+        }
+        if (kDown & KEY_CSTICK_RIGHT) {
+            printf("C-Stick Right\n");
+        }
+        if (kDown & KEY_CSTICK_LEFT) {
+            printf("C-Stick Left\n");
+        }
+        if (kDown & KEY_CSTICK_UP) {
+            printf("C-Stick Up\n");
+        }
+        if (kDown & KEY_CSTICK_DOWN) {
+            printf("C-Stick Down\n");
+        }
+        if (kDown & KEY_CPAD_RIGHT) {
+            printf("Circle Pad Right\n");
+        }
+        if (kDown & KEY_CPAD_LEFT) {
+            printf("Circle Pad Left\n");
+        }
+        if (kDown & KEY_CPAD_UP) {
+            printf("Circle Pad Up\n");
+        }
+        if (kDown & KEY_CPAD_DOWN) {
+            printf("Circle Pad Down\n");
+        }
         
         
         
